@@ -23,7 +23,7 @@ export async function getDb(){
   if (!__dbPromise){
     __dbPromise = (async () => {
       const SQL = await ensureSqlJs();
-      const res = await fetch('data/residencial.db', { cache: 'no-store' });
+      const res = await fetch('data/residencial', { cache: 'no-store' });
       if (!res.ok) throw new Error('No se pudo descargar la base de datos.');
       const buf = await res.arrayBuffer();
       return new SQL.Database(new Uint8Array(buf));
