@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Consulta de inquilinos — Alamedas</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Estilo para mostrar etiquetas al lado derecho sin alargar inputs */
+        .label-right {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+            .label-right input {
+                width: 120px;
+                flex-shrink: 0;
+            }
+
+        /* Estilo para el logo en el nav */
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="brand">
+                <img src="img/logoalamedas.jpg" alt="Logo Alamedas" class="logo-img">
+                Alamedas de Santa Ana
+            </div>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="consulta.html">Consulta de Inquilinos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h2 style="margin-top:1rem">Consulta del estado de cuota de mantenimiento</h2>
+        <form id="form-consulta" class="form">
+            <div class="form-row-3">
+                <label class="label-right">
+                    <input id="dpi" required inputmode="numeric" minlength="13" maxlength="13" placeholder="13 dígitos">
+                    <span>DPI</span>
+                </label>
+                <label class="label-right">
+                    <input id="casa" type="number" min="1" required>
+                    <span>Número de casa</span>
+                </label>
+                <label class="label-right">
+                    <input id="fecha" type="date" required>
+                    <span>Fecha de nacimiento</span>
+                </label>
+            </div>
+            <div class="form-row">
+                <label>Primer nombre<br><input id="nombre" required></label>
+                <label>Primer apellido<br><input id="apellido" required></label>
+            </div>
+            <button class="btn" type="submit">Consultar estado</button>
+            <div id="resultado" class="msg"></div>
+        </form>
+
+        <h3 style="margin-top:1.5rem">Historial de pagos</h3>
+        <div class="controls">
+            <label>Desde: <select id="m1"></select>/<select id="y1"></select></label>
+            <label>Hasta: <select id="m2"></select>/<select id="y2"></select></label>
+            <button id="btn-hist" class="btn" type="button">Consultar historial</button>
+        </div>
+        <div class="card">
+            <table id="hist" class="table">
+                <thead><tr><th>Año</th><th>Mes</th><th>Fecha de pago</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div>© <span id="y"></span> José Fernando López Florián</div>
+            <div><a href="index.html">Inicio</a></div>
+        </div>
+    </footer>
+
+    <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+    <script type="module" src="js/consulta.js"></script>
+</body>
+</html>
+
